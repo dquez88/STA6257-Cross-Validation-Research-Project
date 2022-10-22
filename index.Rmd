@@ -1,10 +1,10 @@
 ---
 title: "STA6257 Cross Validation"
-author: "Mary Tarabocchia, Jason Heiserman, Daniel Bohorquez"
+author: "Mary Tarabocchia, Jason Heiserman to test if things work, Daniel Bohorquez"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
-x = 1+2
-x
+
 # Week 9 (Oct 30)
 # I can finally do stuff! (Jason H)
+
