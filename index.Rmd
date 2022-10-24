@@ -1,6 +1,6 @@
 ---
 title: "STA6257 Cross Validation"
-author: "Mary Tarabocchia, Jason Heiserman to test if things work, Daniel Bohorquez"
+author: "Mary Tarabocchia, Jason Heiserman, Daniel Bohorquez"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
