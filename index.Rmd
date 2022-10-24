@@ -7,4 +7,3 @@ site: bookdown::bookdown_site
 
 # Week 9 (Oct 30)
 # I can finally do stuff! (Jason H)
-
