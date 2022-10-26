@@ -72,10 +72,9 @@ cross-validation techniques can be used:
 
 # Limitations of Cross-Validation
 
-The primary challenge of cross-validation is the need for excessive
-computational resources, especially in methods such as k-fold CV. Since
-the algorithm has to be rerun from scratch for k times, it requires k
-times more computation to evaluate.
+Currently, cross-validation is "widely accepted in data mining and machine learning community, and serves as a standard procedure for performance estimation and model selection." (Tang, 2008)
+
+However, cross-validation does present some challenges.  One main drawback of cross-validation is the need for excessive computational resources, especially in methods such as k-fold CV. Since the algorithm has to be rerun from scratch for k times, it requires k times more computation to evaluate.
 
 Another limitation involves unseen data. In cross-validation, the test
 dataset is the unseen data used to evaluate the model's performance.
@@ -89,3 +88,5 @@ research study involving only a particular population group (for
 example, men aged 60 to 65), when it's applied to the general
 population, the predictive performance might differ dramatically
 compared to the cross-validation accuracy.
+
+Finally, not only must the datasets be independently controlled across different runs, there "must not be any overlap between the data used for learning and the data used for validation in the same run." (Tang 2008) Typically, an algorithm can make more accurate predictions on data it has seen during the learning phase as compared to data it has not seen. For this reason, "an overlap between the training and validation set can lead to an over-estimation of the performance metric and is forbidden." (Tang 2008)
