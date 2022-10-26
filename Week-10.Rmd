@@ -23,3 +23,69 @@ questions:
 
 You will receive feedback on your submitted literature review before
 next week's first class meeting.
+
+# Introduction
+
+Cross-validation is defined as a method “of estimating our model error using a single observed dataset by separating data used for training from the data used for model selection and final accuracy.” (Lau, 2020)  Cross-validation is a “conceptually simple technique, easy to apply and requires no specific knowledge about the details of the model.” (Abu-Mostafa, 2012) 
+
+Simply put, in the process of cross-validation, the original data sample
+is randomly divided into several subsets. The machine learning model
+trains on all subsets, except one. After training, the model is tested
+by making predictions on the remaining subset.
+
+In many instances, multiple rounds of cross-validation are performed
+using different subsets, and their results are averaged to determine
+which model is a good predictor. (Shaffer, 2004)
+
+# Overfitting
+
+Overfitting is a “phenomenon where fitting the observed facts (data) well no longer indicates that we will get a decent out-of-sample error, and may actually lead to the opposite effect.” (Abu-Mostafa, 2012) Overfitting occurs when noise in the data “has misled the data.” (Abu-Mostafa, 2012)  One “cure” for overfitting is cross-validation.
+
+
+# Types of Cross-Validation
+
+Depending on the availability and size of the data set, various
+cross-validation techniques can be used:
+
+-   K-fold Cross-Validation
+
+-   Stratified K-fold Cross-Validation
+
+-   Holdout method
+
+-   Leave-p-out Cross-Validation
+
+-   Leave-one-out Cross-Validation
+
+-   Monte carlo Cross-Validation
+
+## K-Fold Cross-Validation
+
+## Stratified K-fold Cross-Validation
+
+## Holdout method
+
+## Leave-p-out Cross-Validation
+
+## Monte carlo Cross-Validation
+
+
+# Limitations of Cross-Validation
+
+The primary challenge of cross-validation is the need for excessive
+computational resources, especially in methods such as k-fold CV. Since
+the algorithm has to be rerun from scratch for k times, it requires k
+times more computation to evaluate.
+
+Another limitation involves unseen data. In cross-validation, the test
+dataset is the unseen data used to evaluate the model's performance.
+This works in theory, however, there can never be a comprehensive set of
+unseen data in practice, and one can never predict the kind of data that
+the model might encounter in the future.
+
+Take for example a model is built to predict an individual's risk of
+contracting a specific disease. If the model is trained on data from a
+research study involving only a particular population group (for
+example, men aged 60 to 65), when it's applied to the general
+population, the predictive performance might differ dramatically
+compared to the cross-validation accuracy.
