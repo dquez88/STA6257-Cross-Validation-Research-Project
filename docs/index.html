@@ -67,9 +67,17 @@
 <li><a href="./">Cross Validation Research Project</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#down-the-rabbit-hole" id="toc-down-the-rabbit-hole"><span class="toc-section-number">1</span> Week 10</a></li>
-<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="toc-the-pool-of-tears"><span class="toc-section-number">2</span> Week 11</a></li>
-<li><a href="a-caucus-race-and-a-long-tale.html#a-caucus-race-and-a-long-tale" id="toc-a-caucus-race-and-a-long-tale"><span class="toc-section-number">3</span> Week 12</a></li>
+<li><a href="index.html#down-the-rabbit-hole" id="Introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Overfitting"><span class="toc-section-number">2</span> Overfitting</a></li>
+<li><a href="a-caucus-race-and-a-long-tale.html#a-caucus-race-and-a-long-tale" id="Types of Cross-Validation"><span class="toc-section-number">3</span> Types of Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="K-Fold Cross-Validation"><span class="toc-section-number">2</span> K-Fold Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Stratified K-Fold Cross-Validation"><span class="toc-section-number">2</span> Stratified K-Fold Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Holdout Method"><span class="toc-section-number">2</span> Holdout Method</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Leave-One-Out Cross-Validation"><span class="toc-section-number">2</span> Leave-One-Out Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Leave-P-Out Cross-Validation"><span class="toc-section-number">2</span> Leave-P-Out Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Monte Carlo Cross-Validation"><span class="toc-section-number">2</span> Monte Carlo Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="Limitations of Cross-Validation"><span class="toc-section-number">2</span> Limitations of Cross-Validation</a></li>
+<li><a href="the-pool-of-tears.html#the-pool-of-tears" id="References"><span class="toc-section-number">2</span> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -95,7 +103,16 @@
 <p class="date"><em>2022-10-20</em></p>
 </div>
 <div id="down-the-rabbit-hole" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Week 10</h1>
+<h1><span class="header-section-number">Introduction</span></h1>
+<p>Cross-validation is defined as a method &quot;of estimating our model error using a single observed dataset by
+separating data used for training from the data used for model selection and final accuracy.&quot; (Lau, 2020) Cross-
+validation is a &quot;conceptually simple technique, easy to apply and requires no specific knowledge about the
+details of the model.&quot; (Abu-Mostafa, 2012) In other words, in the process of cross-validation, the original data is
+randomly divided into several subsets. The machine learning model trains on all subsets, except one. After
+training, the model is tested on the remaining subset.</p>
+<br>
+<p>In many instances, multiple rounds of cross-validation are performed using different subsets, and their results
+  are averaged to determine which model is a good predictor. (Shaffer, 1993)</p>
 
 </div>
             </section>
