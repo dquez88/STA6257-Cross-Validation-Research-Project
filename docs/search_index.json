@@ -1,5 +1,13 @@
 [
-["index.html", "STA6257 Cross Validation Chapter 1 Down the rabbit-hole", " STA6257 Cross Validation Mary Tarabocchia, Jason Heiserman, Daniel Bohorquez 2022-10-20 Chapter 1 Down the rabbit-hole "],
-["the-pool-of-tears.html", "Chapter 2 The pool of tears", " Chapter 2 The pool of tears "],
-["a-caucus-race-and-a-long-tale.html", "Chapter 3 A caucus-race and a long tale", " Chapter 3 A caucus-race and a long tale "]
+["index.html", "STA6257 Cross Validation Introduction", " STA6257 Cross Validation Mary Tarabocchia, Jason Heiserman, Daniel Bohorquez 2022-10-20 Introduction "],
+["overfitting.html", "Overfitting", " Overfitting "],
+["cross-validation.html", "Types of Cross-Validation", " Types of Cross-Validation "]
+["k-fold.html", "K-Fold Cross-Validation", " K-Fold Cross-Validation "]
+["stratified.html", "Stratified K-Fold Cross-Validation", " Stratified K-Fold Cross-Validation "]
+["holdout-method.html", "Holdout Method", " Holdout Method "]
+["leave-one-out.html", "Leave-One-Out Cross-Validation", " Leave-One-Out Cross-Validation "]
+["leave-p-out.html", "Leave-P-Out Cross-Validation", " Leave-P-Out Cross-Validation "]
+["monte-carlo.html", "Monte Carlo Cross-Validation", " Monte Carlo Cross-Validation "]
+["limitations.html", "Limitations of Cross-Validation", " Limitations of Cross-Validation "]
+["references.html", "References", " References "]
 ]
