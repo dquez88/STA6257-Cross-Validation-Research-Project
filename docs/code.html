@@ -109,137 +109,21 @@
 <div id="code" class="section level1" number="1">
 <h1><span class="header-section-number">Code</span></h1>
 
-```{r}
-title: "STA6257: Final Project"
-author: Mary, Daniel, Jason
-format: html
-self-contained: true
-editor: source
-```
-
-```{r}
-#| label: load-libraries
-#| include: true
-
-library(tidyverse)
-library(haven)
-library(equatiomatic)
-library(dplyr)
-library(caret)
-library(ggplot2)
-
-```
-
-```{r, echo = TRUE}
-#| label: import-data
-#| include: true
-
-crossdata <- read_dta("C:/Users/mtara/Desktop/Graduate School/STA6257/analysis1.dta") %>%
-  dplyr::select(subjid,hba1c,age,totchol,htn,hsgrad,bmi,fpg,ecghr) %>%
-  na.omit()
-
-```
-
-```{r, echo = TRUE}
-#| label: graph-data
-#| include: true
-
-ggplot(crossdata, aes(bmi)) +
-  geom_histogram(aes(fill = as.factor(htn)), color = "black", binwidth = 2)
-
-ggplot(crossdata, aes(age)) +
-  geom_histogram(aes(fill = as.factor(htn)), color = "black", binwidth = 2)
-
-ggplot(crossdata, aes(ecghr)) +
-  geom_histogram(aes(fill = as.factor(htn)), color = "black", binwidth = 2)
-
-
-```
-
-The histograms show that the distribution of bmi (Body Mass Index), age and ecghr (Heart Rate) based on htn (Hypertension 1-Yes, 0=No) is symmetric. This indicates that the data we will use in our models are evenly distributed around the central value.
-
-```{r, echo = TRUE}
-#| label: cv-kfold
-#| include: true
-
-## This sets the cross-validation method with k=5 folds
-method <- trainControl(method = "cv", number = 5)
-
-## #fit a regression model and use k-fold CV to evaluate performance
-crossmodelfull <- train(as.factor(htn) ~ age + bmi + ecghr,
-                        data = crossdata,
-                        method = "glm",
-                        trControl = method)
-
-crossmodel1 <- train(as.factor(htn) ~ age + bmi,
-                        data = crossdata,
-                        method = "glm",
-                        trControl = method)
-
-crossmodel2 <- train(as.factor(htn) ~ age + ecghr,
-                        data = crossdata,
-                        method = "glm",
-                        trControl = method)
-
-crossmodel3 <- train(as.factor(htn) ~ bmi + ecghr,
-                        data = crossdata,
-                        method = "glm",
-                        trControl = method)
-
-```
-
-```{r, echo = TRUE}
-#| label: results
-#| include: true
-
-print(crossmodelfull)
-
-print(crossmodel1)
-
-print(crossmodel2)
-
-print(crossmodel3)
-
-```
-
-Interpretation of results:
-
-1.  No pre-processing. We did not scale the data before fitting the models.
-
-2.  The re-sampling method we used to evaluate the model was cross-validation with 5 folds.
-
-3.  The sample size for each training set was approximately 1923.
-
-4.  **Accuracy:** This is a measure of the correlation between the predictions made by the model and the actual observations. The higher the Accuracy, the more closely a model can predict the actual observations.
-
-By comparing the Accuracy metric of the 4 models, we can see the our FULL model produces the highest Accuracy rate and is therefore the best model to use.
-
-```{r}
-
-crossmodelfull$resample
-
-```
-
-Above are the predictions for each fold from our FULL model.
-
-```{r}
-
-crossmodelfull$finalModel
-
-```
-
-Our final model is:
-
-$$
-\hat{htn} = -7.434508 + 0.09001{age} + 0.064562{bmi} + 0.009551{ecghr}
-$$
-
-For each 1-year increase in Age, the likelihood of a person having hypertension increases by approximately 9%.
-
-For each 1 kg/m increase in BMI (Body Mass Index), the likelihood of a person having hypertension increases by approximately 6%.
-
-For each 1 bpm increase in Ecghr (Heart Rate), the likelihood of a person having hypertension increases by slightly less than 1%.
-```
+<p class=MsoNormal><img width=446 height=284 id="Picture 9"
+src="images/image009.png"
+alt="Diagram&#10;&#10;Description automatically generated" class="center"></p>
+  
+<p class=MsoNormal><img width=446 height=284 id="Picture 10"
+src="images/image010.png"
+alt="Diagram&#10;&#10;Description automatically generated" class="center"></p>
+  
+<p class=MsoNormal><img width=446 height=284 id="Picture 11"
+src="images/image011.png"
+alt="Diagram&#10;&#10;Description automatically generated" class="center"></p>
+  
+<p class=MsoNormal><img width=446 height=284 id="Picture 12"
+src="images/image012.png"
+alt="Diagram&#10;&#10;Description automatically generated" class="center"></p>
 
 </div>
             </section>
