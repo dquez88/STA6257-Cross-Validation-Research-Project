@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>STA6257 Cross Validation</title>
+  <meta name="description" content="STA6257 Cross Validation">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="STA6257 Cross Validation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="STA6257 Cross Validation" />
+  
+  
+  
+
+<meta name="author" content="Mary Tarabocchia, Jason Heiserman, Daniel Bohorquez">
+
+
+<meta name="date" content="2022-10-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="prev" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Cross Validation Research Project</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#down-the-rabbit-hole" id="Introduction"><span class="toc-section-number"><b>1</b></span> Introduction</a></li>
+<ol>
+<li><a href="definition.html#definition" id="Definition"><span class="toc-section-number"><b>1.1</b></span> Definition</a></li>
+<li><a href="overfitting.html#overfitting" id="Overfitting"><span class="toc-section-number"><b>1.2</b></span> Overfitting</a></li>
+</ol>
+<li><a href="cross-validation.html#cross-validation" id="Types of Cross-Validation"><span class="toc-section-number"><b>2</b></span> Types of Cross-Validation</a></li>
+<ol>
+<li><a href="k-fold.html#k-fold" id="K-Fold Cross-Validation"><span class="toc-section-number"><b>2.1</b></span> K-Fold Cross-Validation</a></li>
+<li><a href="stratified.html#stratified" id="Stratified K-Fold Cross-Validation"><span class="toc-section-number"><b>2.2</b></span> Stratified K-Fold Cross-Validation</a></li>
+<li><a href="holdout-method.html#holdout-method" id="Holdout Method"><span class="toc-section-number"><b>2.3</b></span> Holdout Method</a></li>
+<li><a href="leave-one-out.html#leave-one-out" id="Leave-One-Out Cross-Validation"><span class="toc-section-number"><b>2.4</b></span> Leave-One-Out Cross-Validation</a></li>
+<li><a href="leave-p-out.html#leave-p-out" id="Leave-P-Out Cross-Validation"><span class="toc-section-number"><b>2.5</b></span> Leave-P-Out Cross-Validation</a></li>
+<li><a href="monte-carlo.html#monte-carlo" id="Monte Carlo Cross-Validation"><span class="toc-section-number"><b>2.6</b></span> Monte Carlo Cross-Validation</a></li>
+</ol>
+<li><a href="limitations.html#limitations" id="Limitations of Cross-Validation"><span class="toc-section-number"><b>3</b></span> Limitations of Cross-Validation</a></li>
+<li><a href="methods.html#methods" id="Methods"><span class="toc-section-number"><b>4</b></span> Methods</a></li>
+<ol>
+<li><a href="data.html#data" id="Data"><span class="toc-section-number"><b>4.1</b></span> Data</a></li>
+<li><a href="statistical-methods.html#statistical-method" id="Statistical-Method"><span class="toc-section-number"><b>4.2</b></span> Statistical-Method</a></li>
+<li><a href="analysis-results.html#analysis-results" id="Analysis-Results"><span class="toc-section-number"><b>4.3</b></span> Analysis-Results</a></li>
+</ol>
+<li><a href="conclusion.html#references" id="Conclusion"><span class="toc-section-number"><b>5</b></span> Conclusion</a></li>
+<li><a href="references.html#references" id="References"><span class="toc-section-number"><b>6</b></span> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA6257 Cross Validation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">STA6257 Cross Validation</h1>
+<p class="author"><em>Mary Tarabocchia, Jason Heiserman, Daniel Bohorquez</em></p>
+<p class="date"><em>date-time</em></p>
+</div>
+<div id="code" class="section level1" number="1">
+<h1><span class="header-section-number">Code</span></h1>
+```{r echo = TRUE, eval=FALSE}
+  ---
+title: "STA6257: Final Project"
+author: Mary, Daniel, Jason
+format: html
+self-contained: true
+editor: source
+---
+
+```{r, echo = TRUE}
+#| label: load-libraries
+#| include: true
+
+library(tidyverse)
+library(haven)
+library(equatiomatic)
+library(dplyr)
+library(caret)
+library(ggplot2)
+
+```
+
+```{r, echo = TRUE}
+#| label: import-data
+#| include: true
+
+crossdata <- read_dta("C:/Users/mtara/Desktop/Graduate School/STA6257/analysis1.dta") %>%
+  dplyr::select(subjid,hba1c,age,totchol,htn,hsgrad,bmi,fpg,ecghr) %>%
+  na.omit()
+
+```
+
+```{r, echo = TRUE}
+#| label: graph-data
+#| include: true
+
+ggplot(crossdata, aes(bmi)) +
+  geom_histogram(aes(fill = as.factor(htn)), color = "black", binwidth = 2)
+
+ggplot(crossdata, aes(age)) +
+  geom_histogram(aes(fill = as.factor(htn)), color = "black", binwidth = 2)
+
+ggplot(crossdata, aes(ecghr)) +
+  geom_histogram(aes(fill = as.factor(htn)), color = "black", binwidth = 2)
+
+
+```
+
+The histograms show that the distribution of bmi (Body Mass Index), age and ecghr (Heart Rate) based on htn (Hypertension 1-Yes, 0=No) is symmetric. This indicates that the data we will use in our models are evenly distributed around the central value.
+
+```{r, echo = TRUE}
+#| label: cv-kfold
+#| include: true
+
+## This sets the cross-validation method with k=5 folds
+method <- trainControl(method = "cv", number = 5)
+
+## #fit a regression model and use k-fold CV to evaluate performance
+crossmodelfull <- train(as.factor(htn) ~ age + bmi + ecghr,
+                        data = crossdata,
+                        method = "glm",
+                        trControl = method)
+
+crossmodel1 <- train(as.factor(htn) ~ age + bmi,
+                        data = crossdata,
+                        method = "glm",
+                        trControl = method)
+
+crossmodel2 <- train(as.factor(htn) ~ age + ecghr,
+                        data = crossdata,
+                        method = "glm",
+                        trControl = method)
+
+crossmodel3 <- train(as.factor(htn) ~ bmi + ecghr,
+                        data = crossdata,
+                        method = "glm",
+                        trControl = method)
+
+```
+
+```{r, echo = TRUE}
+#| label: results
+#| include: true
+
+print(crossmodelfull)
+
+print(crossmodel1)
+
+print(crossmodel2)
+
+print(crossmodel3)
+
+```
+
+Interpretation of results:
+
+1.  No pre-processing. We did not scale the data before fitting the models.
+
+2.  The re-sampling method we used to evaluate the model was cross-validation with 5 folds.
+
+3.  The sample size for each training set was approximately 1923.
+
+4.  **Accuracy:** This is a measure of the correlation between the predictions made by the model and the actual observations. The higher the Accuracy, the more closely a model can predict the actual observations.
+
+By comparing the Accuracy metric of the 4 models, we can see the our FULL model produces the highest Accuracy rate and is therefore the best model to use.
+
+```{r}
+
+crossmodelfull$resample
+
+```
+
+Above are the predictions for each fold from our FULL model.
+
+```{r}
+
+crossmodelfull$finalModel
+
+```
+
+Our final model is:
+
+$$
+\hat{htn} = -7.434508 + 0.09001{age} + 0.064562{bmi} + 0.009551{ecghr}
+$$
+
+For each 1-year increase in Age, the likelihood of a person having hypertension increases by approximately 9%.
+
+For each 1 kg/m increase in BMI (Body Mass Index), the likelihood of a person having hypertension increases by approximately 6%.
+
+For each 1 bpm increase in Ecghr (Heart Rate), the likelihood of a person having hypertension increases by slightly less than 1%.
+```
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/dquez88/STA6257-Cross-Validation-Research-Project/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
