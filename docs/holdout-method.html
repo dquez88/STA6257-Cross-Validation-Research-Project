@@ -115,10 +115,13 @@
 <p class=MsoNormal>&nbsp;</p>
   
 <p class=MsoNormal>The holdout method is the simplest form of cross-validation. For this method, the test data is &quot;held out&quot; and not
-used during training. Hold-out validation avoids the overlap between training data and test data, and therefore
-gives a more accurate estimate of the performance of the algorithm. The downside is that this procedure does
-not use all the available data and the results are highly dependent on the choice for the training/test split. (Tang,
-2008)</p>
+used during training. With this method, you need to determine what proportion of the data is for training and
+what proportion is for testing. It is common practice to have 60-80% of the data go towards training the model
+and the remainder go towards testing the model. Hold-out validation avoids the overlap between training data
+and test data, and therefore gives a more accurate estimate of the performance of the algorithm. (Tang, 2008)
+The downside is that this procedure is that the results are highly dependent on the choice for the training/test
+split. (Tang, 2008) Although the holdout method &quot;is computationally efficient and fully independent of data&quot;,
+small datasets can result in high performance variance. (Baron, 2021)</p>
 
 <p class=MsoNormal><img width=456 height=100 id="Picture 4"
 src="images/image004.png" class="center"
