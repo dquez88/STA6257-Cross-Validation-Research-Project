@@ -118,15 +118,16 @@
 standard procedure for performance estimation and model selection.&quot; (Tang, 2008) However, cross-validation
 does present some challenges. One main drawback of cross-validation is the need for excessive computational
 resources, especially in methods such as k-fold cross-validation. Since the algorithm must be rerun from scratch
-for k times, it requires k times more computation to evaluate. </p>
+for k times, it requires k times more computation to evaluate. (Lau, 2020) </p>
  
  <p class=MsoNormal>Another limitation involves unseen data. In cross-validation, the test dataset is the unseen data used to evaluate
-the model's performance. This works in theory, however, there can never be a comprehensive set of unseen
-data in practice, and one can never predict the kind of data that the model might encounter in the future. </p>
+the model&#39;s performance. This works in theory, however, there can never be a comprehensive set of unseen
+data in practice, and one can never predict the kind of data that the model might encounter in the future. (Tang,
+2008) </p>
   
-  <p class=MsoNormal>Take for example a model is built to predict an individual's risk of contracting a specific disease. If the model is
+  <p class=MsoNormal>Take for example a model is built to predict an individual&#39;s risk of contracting a specific disease. If the model is
 trained on data from a research study involving only a particular population group (for example, men aged 60 to
-65), when it's applied to the general population, the predictive performance might differ dramatically compared
+65), when it&#39;s applied to the general population, the predictive performance might differ dramatically compared
 to the cross-validation accuracy.</p>
   
   <p class=MsoNormal>Finally, not only must the datasets be independently controlled across different runs, but there also &quot;must not
