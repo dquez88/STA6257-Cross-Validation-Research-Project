@@ -128,6 +128,88 @@
   <li>Monte Carlo Cross-Validation</li>
   </ul>
   
+  <h2><span class="header-section-number">2.1 K-Fold Cross-Validation</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+  
+<p class=MsoNormal>In k-fold cross-validation the data is first partitioned into k equally sized segments or folds. K iterations of
+training and validation are performed such that within each iteration a different fold of the data is used for
+validation while the remaining k-1 folds are used for training. (Lau, 2020) One negative of this method is that &quot;the examination of 
+relations between sizes of the datasets shows that small sample sizes can make this algorithm uncertain.&quot; (Baron, 2021) In addition, the data needs to be 
+&quot;stratified or rearranged in such a way as to ensure each fold is representative of the whole dataset.&quot; (Tang, 2008)</p>
+
+<p class=MsoNormal><img width=456 height=284 id="Picture 2"
+src="images/image002.png" class="center"
+alt="Diagram&#10;&#10;Description automatically generated"></p>
+  
+<h2><span class="header-section-number">2.2 Stratified K-Fold Cross-Validation</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+  
+<p class=MsoNormal>The stratified K-fold cross-validation method is another technique that involves the division of data into &#39;k&#39;
+subsets or folds. However, to &quot;ensure that there is no biased division of data in k folds, the process of
+stratification is conducted to rearrange the data in such a manner that each fold represents the whole data.&quot;
+(Tang, 2008) &quot;The modification depends on the simple assumption that splitting the data into k folds must be
+carried out in such way that each fold contains the similar number of samples for each target class.&quot;(Baron,
+2021) </p>
+
+<p class=MsoNormal><img width=456 height=284 id="Picture 3"
+src="images/image003.png" class="center"
+alt="Diagram&#10;&#10;Description automatically generated"></p>
+  
+<h2><span class="header-section-number">2.3 Holdout Method</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+  
+<p class=MsoNormal>The holdout method is the simplest form of cross-validation. For this method, the test data is &quot;held out&quot; and not
+used during training. With this method, you need to determine what proportion of the data is for training and
+what proportion is for testing. It is common practice to have 60-80% of the data go towards training the model
+and the remainder go towards testing the model. Hold-out validation avoids the overlap between training data
+and test data, and therefore gives a more accurate estimate of the performance of the algorithm. (Tang, 2008)
+The downside is that this procedure is that the results are highly dependent on the choice for the training/test
+split. (Tang, 2008) Although the holdout method &quot;is computationally efficient and fully independent of data&quot;,
+small datasets can result in high performance variance. (Baron, 2021)</p>
+
+<p class=MsoNormal><img width=456 height=100 id="Picture 4"
+src="images/image004.png" class="center"
+alt="Diagram&#10;&#10;Description automatically generated"></p>
+  
+<h2><span class="header-section-number">2.4 Leave-One-Out Cross-Validation</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+  
+<p class=MsoNormal>Leave-one-out cross-validation (LOOCV) is a special case of k-fold cross-validation where k equals the number of
+observations in the data. In other words, in each iteration all the data except for a single observation are used
+for training and the model is tested on that single observation. This is a &quot;computationally expensive procedure
+to perform so it is more widely used on small datasets.&quot; (Tang, 2008)</p>
+
+<p class=MsoNormal><img width=456 height=284 id="Picture 5"
+src="images/image005.png" class="center"
+alt="Diagram&#10;&#10;Description automatically generated"></p>
+  
+<h2><span class="header-section-number">2.5 Leave-P-Out Cross-Validation</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+  
+<p class=MsoNormal>Leave-p-out cross-validation (LpOCV) is a method in which p number of data points are taken out from the total
+number of data samples represented by n. The model is trained on n-p data points and later tested on p data
+points. The same process is repeated for all possible combinations of p from the original sample. Finally, the
+results of each iteration are averaged to attain the cross-validation accuracy. (Tang, 2008) Unfortunately, when
+using this approach, &quot;the validating process can be time consuming and has zero randomness but reduces the
+bias.&quot; (Baron, 2021)</p>
+
+<p class=MsoNormal><img width=456 height=284 id="Picture 6"
+src="images/image006.png" class="center"
+alt="Diagram&#10;&#10;Description automatically generated"></p>
+  
+<h2><span class="header-section-number">2.6 Monte Carlo Cross-Validation</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+  
+<p class=MsoNormal>Monte Carlo cross-validation creates multiple random splits of the data into training and testing sets. For each
+split, the model is fit to the training data, and predictive accuracy is assessed using the testing data. The results
+are then averaged over the splits. The disadvantage of this method is that some observations may never be
+selected in the testing subsample, whereas others may overlap, i.e., be selected more than once. (Lever 2016) </p>
+
+<p class=MsoNormal><img width=456 height=284 id="Picture 7"
+src="images/image007.png" class="center"
+alt="Diagram&#10;&#10;Description automatically generated"></p>
+
+  
 </div>
             </section>
 
