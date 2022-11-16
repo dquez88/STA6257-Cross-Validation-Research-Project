@@ -114,10 +114,12 @@
 <h1><span class="header-section-number">Leave-One-Out Cross-Validation</span></h1>
 <p class=MsoNormal>&nbsp;</p>
   
-<p class=MsoNormal>Leave-one-out cross-validation (LOOCV) is a special case of k-fold cross-validation where k equals the number of
-observations in the data. In other words, in each iteration all the data except for a single observation are used
-for training and the model is tested on that single observation. This is a &quot;computationally expensive procedure
-to perform so it is more widely used on small datasets.&quot; (Tang, 2008) </p>
+<p class=MsoNormal>Leave-p-out cross-validation (LpOCV) is a method in which p number of data points are taken out from the total
+number of data samples represented by n. The model is trained on n-p data points and later tested on p data
+points. The same process is repeated for all possible combinations of p from the original sample. Finally, the
+results of each iteration are averaged to attain the cross-validation accuracy. (Tang, 2008) Unfortunately, when
+using this approach, &quot;the validating process can be time consuming and has zero randomness but reduces the
+bias.&quot; (Baron, 2021)</p>
 
 <p class=MsoNormal><img width=456 height=284 id="Picture 5"
 src="images/image005.png" class="center"
