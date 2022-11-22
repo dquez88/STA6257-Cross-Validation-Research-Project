@@ -120,12 +120,130 @@
 <p class=MsoNormal>&nbsp;</p>
 <h3><span class="header-section-number">Training and Testing</span></h3>
   
-<p class=MsoNormal><img width=456 height=284 id="Picture 20"
-src="images/image020.png" class="center"
-alt="Diagram&#10;&#10;Description automatically generated"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>crossdata <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;C:/Users/buste/OneDrive/Desktop/Modeling/analysis1.dta&quot;</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ecghr,age,bmi,htn) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">na.omit</span>()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Sets method of cross-validation to  use leave-one-out</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;LOOCV&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Example model created to demonstrate leave-one-out</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>crossmodelfull <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(htn) <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> ecghr,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> crossdata,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">trControl =</span> method)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>crossmodel1 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(htn) <span class="sc">~</span> age <span class="sc">+</span> bmi,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> crossdata,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> method)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>crossmodel2 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(htn) <span class="sc">~</span> age <span class="sc">+</span> ecghr,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> crossdata,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                     <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> method)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>crossmodel3 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(htn) <span class="sc">~</span> bmi <span class="sc">+</span> ecghr,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> crossdata,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                     <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
   
 <h3><span class="header-section-number">Results</span></h3>
+  
+    <div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(crossmodelfull)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized Linear Model 
 
+2646 samples
+   3 predictor
+   2 classes: &#39;0&#39;, &#39;1&#39; 
+
+No pre-processing
+Resampling: Leave-One-Out Cross-Validation 
+Summary of sample sizes: 2645, 2645, 2645, 2645, 2645, 2645, ... 
+Resampling results:
+
+  Accuracy   Kappa    
+  0.7093726  0.4132869</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(crossmodel1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized Linear Model 
+
+2646 samples
+   2 predictor
+   2 classes: &#39;0&#39;, &#39;1&#39; 
+
+No pre-processing
+Resampling: Leave-One-Out Cross-Validation 
+Summary of sample sizes: 2645, 2645, 2645, 2645, 2645, 2645, ... 
+Resampling results:
+
+  Accuracy   Kappa    
+  0.7071051  0.4090227</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(crossmodel2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized Linear Model 
+
+2646 samples
+   2 predictor
+   2 classes: &#39;0&#39;, &#39;1&#39; 
+
+No pre-processing
+Resampling: Leave-One-Out Cross-Validation 
+Summary of sample sizes: 2645, 2645, 2645, 2645, 2645, 2645, ... 
+Resampling results:
+
+  Accuracy  Kappa   
+  0.685941  0.366857</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(crossmodel3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized Linear Model 
+
+2646 samples
+   2 predictor
+   2 classes: &#39;0&#39;, &#39;1&#39; 
+
+No pre-processing
+Resampling: Leave-One-Out Cross-Validation 
+Summary of sample sizes: 2645, 2645, 2645, 2645, 2645, 2645, ... 
+Resampling results:
+
+  Accuracy   Kappa    
+  0.5684051  0.1202561</code></pre>
+</div>
+</div>
+<p>Interpretation of results:</p>
+<p>No pre-processing. We did not scale the data before fitting the models.</p>
+<p>The re-sampling method we used to evaluate the model was leave-one-out cross-validation.</p>
+<p>The sample size for each training set was approximately 2645.</p>
+<p>Accuracy: This is a measure of the correlation between the predictions made by the model and the actual observations. The higher the Accuracy, the more closely a model can predict the actual observations.</p>
+<p>By comparing the Accuracy metric of the 4 models, we can see the our FULL model produces the highest Accuracy rate and is therefore the best model to use.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>crossmodelfull<span class="sc">$</span>finalModel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:  NULL
+
+Coefficients:
+(Intercept)          age          bmi        ecghr  
+   -7.33430      0.08857      0.06191      0.01125  
+
+Degrees of Freedom: 2645 Total (i.e. Null);  2642 Residual
+Null Deviance:      3655 
+Residual Deviance: 3072     AIC: 3080</code></pre>
+</div>
+</div>
+<p>Our final model is: [ htn = -7.33430 + 0.08857{age} + 0.06191{bmi} + 0.01125{ecghr} ]</p>
+<p>For each 1-year increase in Age, the likelihood of a person having hypertension increases by approximately 8.8%.</p>
+<p>For each 1 kg/m increase in BMI (Body Mass Index), the likelihood of a person having hypertension increases by approximately 6%.</p>
+<p>For each 1 bpm increase in Ecghr (Heart Rate), the likelihood of a person having hypertension increases by approximatly 1%.</p>
+<p>It can be noted that k-fold cross-validation and leave-one-out cross-validation are very similar when it comes to R code.</p>
 
 </div>
             </section>
