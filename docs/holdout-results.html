@@ -247,7 +247,7 @@ Prediction   0   1
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>crossmodel1 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(htn) <span class="sc">~</span> age <span class="sc">+</span> bmi,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> crossdata,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                      <span class="at">method =</span> <span class="st">&quot;glm&quot;</span>,</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> method)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>crossmodel2 <span class="ot">&lt;-</span> <span class="fu">train</span>(<span class="fu">as.factor</span>(htn) <span class="sc">~</span> age <span class="sc">+</span> ecghr,</span>
