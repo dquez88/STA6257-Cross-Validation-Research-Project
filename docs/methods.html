@@ -130,17 +130,6 @@ cardiovascular, renal, and respiratory diseases in African Americans. Data was c
 and biochemical tests and diagnostic procedures during a baseline examination that occurred during calendar
 years 2000-2004 and two follow-up examinations in 2005-2008 and 2009-2012 (<a href="www.jacksonheartstudy.org">Jackson Heart Study</a>).</p>
   
-<div id="statistical-method" class="section level1" number="2">
- <h2><span class="header-section-number">4.2 Statistical-Methods</span></h2>
-  
-  <p> We compare three different cross-validation methods below and choose the best one.</p>
-
-<div id="kfold-results" class="section level1" number="4.2.1">
-
-<h2><span class="header-section-number">4.2.1 K-Fold Cross-Validation</span></h2>
-<p class=MsoNormal>&nbsp;</p>
-<h3><span class="header-section-number">Training and Testing</span></h3>
-  
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>crossdata <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;C:/Users/mtara/Desktop/Graduate School/STA6257/analysis1.dta&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(subjid,hba1c,age,totchol,htn,bmi,fpg,ecghr,nbmedhhincome) <span class="sc">%&gt;%</span></span>
@@ -181,6 +170,19 @@ years 2000-2004 and two follow-up examinations in 2005-2008 and 2009-2012 (<a hr
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#             top = (&quot;Histograms&quot;))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The histograms show that the distribution of bmi (Body Mass Index), age and ecghr (Heart Rate) based on htn (Hypertension Status) is symmetric. This indicates that the data we will use in our models are evenly distributed around the central value. In addition, our plots suggest only age is associated with increased prevalence of hypertension.</p>
+  
+<div id="statistical-method" class="section level1" number="2">
+ <h2><span class="header-section-number">4.2 Statistical-Methods</span></h2>
+  
+  <p> We compare three different cross-validation methods below and choose the best one.</p>
+
+<div id="kfold-results" class="section level1" number="4.2.1">
+
+<h2><span class="header-section-number">4.2.1 K-Fold Cross-Validation</span></h2>
+<p class=MsoNormal>&nbsp;</p>
+<h3><span class="header-section-number">Training and Testing</span></h3>
+  
+
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## This sets the cross-validation method with k=5 folds</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
@@ -240,8 +242,6 @@ Resampling results:
   0.705369  0.4088601</code></pre>
 </div>
   
-<h3><span class="header-section-number">Results</span></h3>
-
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(crossmodel2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Generalized Linear Model 
@@ -275,6 +275,8 @@ Resampling results:
   0.5705423  0.137524</code></pre>
 </div>
 </div>
+  
+  <h3><span class="header-section-number">Results</span></h3>
 <p>Interpretation of results:</p>
 <ol type="1">
 <li><p>No pre-processing. We did not scale the data before fitting the models.</p></li>
@@ -579,7 +581,6 @@ Prediction   0   1
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trControl =</span> method)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
   
-<h3><span class="header-section-number">Results</span></h3>
  <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(crossmodelfull)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -646,6 +647,7 @@ Resampling results:
   0.5684051  0.1202561</code></pre>
 </div>
 </div>
+  <h3><span class="header-section-number">Results</span></h3>
 <p>Interpretation of results:</p>
 <p>No pre-processing. We did not scale the data before fitting the models.</p>
 <p>The re-sampling method we used to evaluate the model was leave-one-out cross-validation.</p>
